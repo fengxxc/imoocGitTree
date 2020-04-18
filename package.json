@@ -1,0 +1,17 @@
+{
+  "name": "imoocgittree",
+  "version": "1.0.0",
+  "description": "慕课网Git页面生成文件导航树脚本（需配合油猴）",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha test/node.test.js && mocha test/view.test.js"
+  },
+  "author": "fengxxc",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
