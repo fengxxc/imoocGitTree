@@ -133,7 +133,6 @@ class Node {
                     // 旧有、新没有的删掉
                     if (!newVal2ChildIndexMap.has(val)) {
                         oldNode.deleteChildByVal(val)
-                        newVal2ChildIndexMap.delete(val)
                     }
                 })
                 // 旧没有、新有的添加
