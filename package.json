@@ -4,6 +4,7 @@
   "description": "慕课网Git页面生成文件导航树脚本（需配合油猴）",
   "main": "main.js",
   "scripts": {
+    "pack": "webpack",
     "test": "mocha test/node.test.js && mocha test/view.test.js"
   },
   "author": "fengxxc",

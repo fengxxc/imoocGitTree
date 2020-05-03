@@ -77,17 +77,17 @@ class View {
                     width: 271px;
                     overflow: auto;
                     height: 100%;
-                    background-color: white;
+                    background-color: "#f3f5f6";
                     transition: left 500ms ease;
                 }
-                /* #imoocTreeSwitch:checked ~ .full.height {
+                #imoocTreeSwitch:checked ~ .full.height {
                     transform: translateX(271px);
                     transition: transform 500ms ease;
                 }
                 .full.height {
                     transform: translateX(0px);
                     transition: transform 500ms ease;
-                } */
+                }
             </style>
         `.trim()
     }
@@ -112,14 +112,7 @@ class View {
         const htmlstr = View.getStyleHTML()
                         + View.getSwitchBtnHTML()
                         + View.getTreeHTML(View.getRenderString(root))
-        const themContainerDom = document.querySelector('.full.height')
-        let gitTreeDom = document.querySelector('gitTree')
-        if (!gitTreeDom) {
-            gitTreeDom = document.createElement('aside')
-            gitTreeDom.id = 'gitTree'
-            document.querySelector('body').insertBefore(gitTreeDom, themContainerDom)
-        }
-        gitTreeDom.innerHTML = htmlstr
+        document.querySelector('body').insertAdjacentHTML('afterbegin', htmlstr);
 
     }
 }
