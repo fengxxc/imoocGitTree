@@ -46,7 +46,8 @@ class View {
                     display: block;
                     width: 50%;
                     height: 2px;
-                    background-color: #444 !important;
+                    /* background-color: #444; */
+                    background-color: transparent;
                     float: left;
                     transform-origin: center center;
                     transition: transform 250ms ease;
@@ -54,10 +55,28 @@ class View {
                 } 
 
                 .imooc-tree-switch span:nth-of-type(1) { 
-                    transform: translateY(-5px); 
+                    /* transform: translateY(-5px);  */
+                    width: 30%;
+                    height: 20%;
+                    border-left: 2px black solid;
+                    border-bottom: 2px black solid;
+                    border-radius: 0 0 0 5px;
                 } 
+                .imooc-tree-switch span:nth-of-type(2) {
+                    width: 30%;
+                    height: 20%;
+                    border-left: 2px black solid;
+                    border-bottom: 2px black solid;
+                    transform: translateX(3px);
+                    border-radius: 0 0 0 5px;
+                }
                 .imooc-tree-switch span:nth-of-type(3) { 
-                    transform: translateY(5px); 
+                    width: 25%;
+                    height: 20%;
+                    border-left: 2px black solid;
+                    border-bottom: 2px black solid;
+                    transform: translateX(6px);
+                    border-radius: 0 0 0 5px;
                 } 
                 #imoocTreeSwitch {
                     display: none;
@@ -73,12 +92,20 @@ class View {
                 }
                 #imoocTreeSwitch:checked ~ .imooc-tree-switch span:nth-of-type(1) {
                     transform: translateY(1px) rotate(45deg);
+                    width: 50%;
+                    height: 2px;
+                    background-color: black;
+                    border: none;
                 }
                 #imoocTreeSwitch:checked ~ .imooc-tree-switch span:nth-of-type(2) {
                     display: none;
                 }
                 #imoocTreeSwitch:checked ~ .imooc-tree-switch span:nth-of-type(3) {
                     transform: translateY(-1px) rotate(-45deg);
+                    width: 50%;
+                    height: 2px;
+                    background-color: black;
+                    border: none;
                 }
                 #imoocTreeSwitch:checked ~ #imoocTree {
                     left: 0px;
