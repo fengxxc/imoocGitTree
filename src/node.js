@@ -114,10 +114,15 @@ class Node {
         return val.search(/\./) > 0 // 'xxx' | '.xxx' is path, 'x.xxx' is file
     }
 
-    static buildByPathString(root, splitChar, fullPath, preNodeFun) {
-        if (fullPath.lastIndexOf('#') > -1) {
-            fullPath = fullPath.slice(0, fullPath.lastIndexOf('#'))
+    static removeUrlHash(url) {
+        if (url.lastIndexOf('#') > -1) {
+            url = url.slice(0, url.lastIndexOf('#'))
         }
+        return url
+    }
+
+    static buildByPathString(root, splitChar, fullPath, preNodeFun) {
+        fullPath = Node.removeUrlHash(fullPath)
         const valArr = fullPath.split(splitChar)
         for (let i = 0, parent = root; i < valArr.length; i++) {
             if (valArr[i] == '') continue

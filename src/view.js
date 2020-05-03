@@ -1,10 +1,24 @@
 const Node = require('./node.js')
 
 class View {
-    static getRenderString(root) {
+    static getRenderString(root, splitChar, curPath) {
+        curPath = Node.removeUrlHash(curPath)
+        if (curPath.startsWith(splitChar)) {
+            curPath = curPath.slice(splitChar.length)
+        }
+        let pathArr = curPath.split(splitChar)
+
         let arr = [root.val]
-        return Node._toTreeString(root, ''
-            , node => `<a href="${arr.push(node.val), arr.join('/')}">${node.val}</a>`
+        return Node._toTreeString(
+            root
+            , ''
+            , node => {
+                if (pathArr.length >= 0 && pathArr[0] == node.val) {
+                    pathArr.shift()
+                    return `<a href="${arr.push(node.val), arr.join('/')}" class="imt-mark">${node.val}</a>`
+                }
+                return `<a href="${arr.push(node.val), arr.join('/')}">${node.val}</a>`
+            }
             , () => arr.pop()
         )
     }
@@ -73,20 +87,25 @@ class View {
                 #imoocTree {
                     position: fixed;
                     padding-top: 44px;
-                    left: -271px;
-                    width: 271px;
+                    left: -360px;
+                    width: 360px;
                     overflow: auto;
                     height: 100%;
-                    background-color: "#f3f5f6";
+                    background-color: #f3f5f6;
                     transition: left 500ms ease;
                 }
                 #imoocTreeSwitch:checked ~ .full.height {
-                    transform: translateX(271px);
-                    transition: transform 500ms ease;
+                    /* transform: translateX(360px); */
+                    margin-left: 360px;
+                    transition: margin-left 500ms ease;
                 }
                 .full.height {
-                    transform: translateX(0px);
-                    transition: transform 500ms ease;
+                    /* transform: translateX(0px) */;
+                    margin-left: 0px;
+                    transition: margin-left 500ms ease;
+                }
+                .imt-mark {
+                    color: #3dc73a;
                 }
             </style>
         `.trim()
@@ -107,11 +126,11 @@ class View {
         return `<pre id="imoocTree">${rstr}</pre>`
     }
 
-    static render(root) {
+    static render(root, splitChar, curPath) {
         // render
         const htmlstr = View.getStyleHTML()
                         + View.getSwitchBtnHTML()
-                        + View.getTreeHTML(View.getRenderString(root))
+                        + View.getTreeHTML(View.getRenderString(root, splitChar, curPath))
         document.querySelector('body').insertAdjacentHTML('afterbegin', htmlstr);
 
     }

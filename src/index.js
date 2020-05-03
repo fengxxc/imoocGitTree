@@ -13,7 +13,7 @@ const main = () => {
     } else {
         root = Node.buildByJson(JSON.parse(cache))
     }
-    const pathname = location.pathname
+    let pathname = location.pathname
     
     // addPath
     const subPaths = document.querySelectorAll('#repo-files-table td.name')
@@ -34,7 +34,7 @@ const main = () => {
     window.localStorage.setItem('imoocGitTreeCache', root.toJsonString())
 
     // render
-    View.render(root)
+    View.render(root, '/', pathname)
     
     
 }
