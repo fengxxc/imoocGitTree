@@ -141,7 +141,7 @@ class View {
     static getSwitchBtnHTML() {
         return `
             <input type="checkbox" id="imoocTreeSwitch">
-            <label for="imoocTreeSwitch" class="imooc-tree-switch" title="imoocGitTree">
+            <label for="imoocTreeSwitch" class="imooc-tree-switch" title="ctrl + shift + x">
                 <span></span>
                 <span></span>
                 <span></span>

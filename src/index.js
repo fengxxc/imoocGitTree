@@ -36,7 +36,23 @@ const main = () => {
     // render
     View.render(root, '/', pathname)
     
-    
+    // 显示/隐藏树
+    const toggleTree = () => {
+        const switchDom = document.getElementById('imoocTreeSwitch')
+        switchDom.checked = !switchDom.checked
+    }
+
+    // 监听 ctrl + shift + x 事件，用于显示/隐藏树
+    document.onkeydown = function(e) {
+        //获取键盘的keyCode值
+        var keyCode = e.keyCode || e.which || e.charCode
+        //获取ctrl 键对应的事件属性
+        var ctrlKeyCode = e.ctrlKey || e.metaKey
+        var shiftKeyCode = e.shiftKey
+        if (keyCode == 88 && ctrlKeyCode && shiftKeyCode) {
+            toggleTree()
+        }
+    }
 }
 
 main()
